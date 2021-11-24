@@ -1,6 +1,6 @@
 .mainNav {
   /* background:linear-gradient(to top, rgba(0,0,0,0.1), rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.6) 75%); */
-  background: #17a2e3;
+  background: #FFAC12;
   position: fixed;
   width: 100vw;
   z-index: 999;
@@ -18,8 +18,8 @@
 }
 
 .navbarLinkContainer{
-  font-size: 1.2em;
-  font-weight: 700;
+  font-size: 1em;
+  font-weight: 500;
   margin-right: 2vw;
 }
 

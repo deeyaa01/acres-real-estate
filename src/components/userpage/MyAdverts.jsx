@@ -17,14 +17,14 @@ class FavoriteAdverts extends Component {
       return (
         <div className="row mt-3 text-center">
           <div className="col-12">
-            <h4>Now you can Login to access your account.</h4>
+            <h4>Login to access your account.</h4>
           </div>
           <div className="col-12">
             <Link className="btn btn-outline-success" to="/login">
               Login
             </Link>
             <Link className="btn btn-outline-info ml-1" to="/register">
-              Sign Up
+              Register
             </Link>
           </div>
         </div>
@@ -52,7 +52,7 @@ class FavoriteAdverts extends Component {
         if (this.props.userAdverts.length === 0) {
           return (
             <div className="container text-center mt-3">
-              <h4>You have not added advertisements yet</h4>
+              <h4>You have not added any advertisments yet.</h4>
               <Link to="/user">Add Adevertisements</Link>
             </div>
           );

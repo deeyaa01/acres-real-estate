@@ -37,7 +37,7 @@ class UserPage extends Component {
     } else {
       if (this.props.user.user) {
         if (this.props.user.justRegistered) {
-          return <h4>Thank you for registration.</h4>;
+          return <h4>Thank you for registering .</h4>;
         } else {
           switch (this.props.user.user.role) {
             case "agencyAgent": {

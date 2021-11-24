@@ -68,7 +68,7 @@ class ShowAppointment extends Component {
             <br />
             Requested By: {appointment.name} - {appointment.email}
             <br />
-            Phone Nr.: {appointment.phone}
+            Phone Number.: {appointment.phone}
           </p>
           <p className="card-text">
             {appointment.text}

@@ -22,7 +22,7 @@ class App extends Component {
       <Provider store={store}>
         <Header />
         <Switch>
-          <Route path="/myadverts" component={MyAdverts} />
+          <Route path="/myadverts" component={MyAdverts} /> 
           <Route path="/favorites" component={FavoriteAdverts} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />

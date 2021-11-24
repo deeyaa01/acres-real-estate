@@ -60,7 +60,7 @@ class MainPage extends Component {
       return (
         <Fragment>
           <Helmet>
-            <title>Real Estate The Netherlands</title>
+            <title>Acres - Perfect hourses at the best prices</title>
             {/* <link rel="canonical" href="http://mysite.com/example" /> */}
             <meta name="description" content="Cheapest and fastest way to sell, buy and rent real estate in the Netherlands." />
             <meta name="keywords" content="real estate, appartment, house, flat, rent, buy" />

@@ -17,6 +17,7 @@ export default class AdvertForm extends Component {
             ) : (
               <button
                 className="btn btn-sm btn-warning mr-3"
+                style= {{background: "#FFAC12", color:"#000"}}
                 type="button"
                 onClick={() => this.props.forRentForSale("sale")}
               >
@@ -34,7 +35,8 @@ export default class AdvertForm extends Component {
             ) : (
               <button
                 type="button"
-                className="btn btn-sm btn-warning"
+                style= {{background: "#FFAC12", color:"#000"}}
+                className="btn btn-sm"
                 onClick={() => this.props.forRentForSale("rent")}
               >
                 For Rent
@@ -43,24 +45,25 @@ export default class AdvertForm extends Component {
           </div>
           {!this.props.formValues.isForRent && !this.props.formValues.isForSale ? (
             <div className="row pl-3 mb-3">
-              <small className="text-danger">Please, Select is it For Sale or For Rent</small>
+              <small className="text-danger"></small>
             </div>
           ) : (
             ""
           )}
+          <h5>Tell us about your property</h5>
           <div className="row mb-3 mt-3">
             <label htmlFor="price" className="col-12 col-md-6">
-              Price - {this.props.formValues.isForSale
-                ? "EUR"
+              Price{this.props.formValues.isForSale
+                ? "INR"
                 : this.props.formValues.isForRent
-                ? "EUR/month"
+                ? "INR/month"
                 : ""} <span className="text-danger">*</span>
               <input
                 type="number"
                 name="price"
                 className="form-control"
-                min="1"
-                step="1"
+                min="10000"
+                step="1000"
                 value={this.props.formValues.price}
                 onChange={this.props.handleChange}
                 required
@@ -68,21 +71,21 @@ export default class AdvertForm extends Component {
               
             </label>
             <label htmlFor="postcode" className="col-12 col-md-6">
-              City Name <span className="text-danger">*</span>
+              City<span className="text-danger">*</span>
               <input
                 type="text"
                 name="city"
                 className="form-control"
                 value={this.props.formValues.city}
                 onChange={this.props.handleChange}
-                placeholder="City Name"
+                placeholder="City"
                 required
               />
             </label>
           </div>
           <div className="row mb-3">
             <label htmlFor="postcode" className="col-12 col-md-8">
-              Address <span className="text-danger">*</span>
+              Address<span className="text-danger">*</span>
               <input
                 type="text"
                 name="address"
@@ -94,20 +97,20 @@ export default class AdvertForm extends Component {
               />
             </label>
             <label htmlFor="postcode" className="col-12 col-md-4">
-              Postcode <span className="text-danger">*</span>
+              Pincode<span className="text-danger">*</span>
               <input
                 type="text"
                 name="postcode"
                 className="form-control"
                 value={this.props.formValues.postcode}
                 onChange={this.props.handleChange}
-                placeholder="Postcode"
+                placeholder="Pincode"
                 required
               />
             </label>
           </div>
           <div className="row mb-3">
-            <label htmlFor="cionstructionYear" className="col-6">
+            <label htmlFor="constructionYear" className="col-6">
               Construction Year <span className="text-danger">*</span>
               <input
                 type="number"
@@ -132,8 +135,10 @@ export default class AdvertForm extends Component {
               />
             </label>
           </div>
+          <h5>Area</h5>
+          <p>Total area covered by your property</p>
           <div className="row mb-3">
-            <label htmlFor="sqrMeter" className="col-6 col-md-3">
+            <label htmlFor="sqrMeter" className="col-6 col-md-4">
               Square Meter <span className="text-danger">*</span>
               <input
                 type="number"
@@ -157,33 +162,90 @@ export default class AdvertForm extends Component {
                 value={this.props.formValues.cubicMeter}
                 onChange={this.props.handleChange}
               />
-            </label>
+              </label>
+          </div>
+          <h5>Room Details</h5>
+          <div className="row mb-3">
             <label htmlFor="numberOfRooms" className="col-6 col-md-3">
-              Nr. of Rooms <span className="text-danger">*</span>
-              <input
-                type="number"
-                className="form-control"
-                name="nrOfRooms"
-                min="1"
-                step="1"
-                value={this.props.formValues.nrOfRooms}
-                onChange={this.props.handleChange}
-              />
+                Bedrooms <span className="text-danger">*</span>
+                <input
+                  type="number"
+                  className="form-control"
+                  name="nrOfRooms"
+                  min="1"
+                  step="1"
+                  value={this.props.formValues.nrOfRooms}
+                  onChange={this.props.handleChange}
+                />
             </label>
             <label htmlFor="numberOfBathrooms" className="col-6 col-md-3">
-              Nr. of Bathrooms <span className="text-danger">*</span>
-              <input
-                type="number"
-                className="form-control"
-                name="nrOfBathrooms"
-                min="1"
-                step="1"
-                value={this.props.formValues.nrOfBathrooms}
-                onChange={this.props.handleChange}
-              />
+                Bathrooms <span className="text-danger">*</span>
+                <input
+                  type="number"
+                  className="form-control"
+                  name="nrOfBathrooms"
+                  min="1"
+                  step="1"
+                  value={this.props.formValues.nrOfBathrooms}
+                  onChange={this.props.handleChange}
+                />
+            </label>
+            <label htmlFor="numberOfOtherRooms" className="col-6 col-md-3">
+                Other rooms <span className="text-danger">*</span>
+                <input
+                  type="number"
+                  className="form-control"
+                  name="nrOfOtherRooms"
+                  min="1"
+                  step="1"
+                  value={this.props.formValues.nrOfOtherRooms}
+                  onChange={this.props.handleChange}
+                />
             </label>
           </div>
-          <div className="row mb-3">
+          <h5>Furnishing</h5>
+          <div class ="form-check-inline">
+          <label htmlFor="furnishing" class="form-check-label">
+            <input
+              style = {{height:"1em"}}
+              type="radio"
+              className="form-control"
+              name="furnishing"
+              value="furnished"
+              onChange={this.props.handleChange}
+            />
+            Furnished
+          </label>
+          </div>
+          <div class = "form-check-inline">
+            <label htmlFor="furnishing" class="form-check-label">
+              <input
+                style = {{height:"1em"}}
+                type="radio"
+                className="form-control"
+                name="furnishing"
+                value="semi-furnished"
+                onChange={this.props.handleChange}
+              />
+              Semi-furnished
+            </label>
+          </div>
+          <div class="form-check-inline">
+            <label htmlFor="furnishing" class="form-check-label">
+              <input
+                style = {{height:"1em", float:"left"}}
+                type="radio"
+                className="form-control"
+                name="furnishing"
+                value="unfurnished"
+                onChange={this.props.handleChange}
+              />
+              Unfurnished
+            </label>
+          </div>
+          <h5>Floor details</h5>
+          <small>Total area covered by your property</small>
+          <div className="row mb-3" style={{padding:"1px"}}>
             <label htmlFor="numberOfFloors" className="col-6 col-md-3">
               Number of Floors <span className="text-danger">*</span>
               <input
@@ -197,7 +259,7 @@ export default class AdvertForm extends Component {
               />
             </label>
             <label htmlFor="locatedOnFloor" className="col-6 col-md-3">
-              Located on Floor <span className="text-danger">*</span>
+              Property Floor <span className="text-danger">*</span>
               <input
                 type="number"
                 className="form-control"
@@ -207,8 +269,9 @@ export default class AdvertForm extends Component {
                 value={this.props.formValues.locatedOnFloor}
                 onChange={this.props.handleChange}
               />
-            </label>
-            <label htmlFor="monthlyPayment" className="col-6 col-md-3">
+              </label>
+            </div>
+            {/*<label htmlFor="monthlyPayment" className="col-6 col-md-3">
               Monthly Payments <span className="text-danger">*</span>
               <input
                 type="number"
@@ -277,7 +340,7 @@ export default class AdvertForm extends Component {
                 onChange={this.props.handleChange}
               />
             </label>
-          </div>
+            </div>*/}
           <div className="col-12">
             <div className="row mt-3">
               <label htmlFor="description">
@@ -294,7 +357,7 @@ export default class AdvertForm extends Component {
                 required
               />
             </div>
-          </div>
+            </div>
           <div className="col-12 mt-3">
             <input className="btn btn-success" type="submit" value="Add New" />
           </div>

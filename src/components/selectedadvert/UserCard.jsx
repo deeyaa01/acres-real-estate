@@ -30,7 +30,7 @@ export default class UserCard extends Component {
             </Fragment>
           ) : (
             <Fragment>
-              <div className="card-header">
+              <div className="card-header" style={{background:"#271A00", color:"#FFF"}}>
                 {user.username}
                 {user.isVerifiedByAdmin ? (
                   <span className="badge badge-pill badge-success ml-2">

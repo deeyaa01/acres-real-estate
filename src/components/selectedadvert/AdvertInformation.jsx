@@ -11,23 +11,25 @@ export default class AdvertInformation extends Component {
     return (
       <Fragment>
         <ul className="list-group">
-          <li className="list-group-item active">Main</li>
+          <li className="list-group-item active" style = {{background:"#FFE3B0", color:"#000"}}>Property Details</li>
           <li className="list-group-item">
             Price: {this.numberWithSpaces(advert.price)}{" "}
-            {advert.isForSale ? "EUR" : "EUR/month"}
+            {advert.isForSale ? "INR" : "INR/month"}
           </li>
           <li className="list-group-item">
-            Price per m<sup>2</sup>: ~
-            {Math.round(advert.price / advert.sqrMeter)} EUR
+            Price per m<sup>2</sup>:~
+            {Math.round(advert.price / advert.sqrMeter)} INR
           </li>
-          {advert.monthlyContibution ? (
+          {/*{advert.monthlyContibution ? (
             <li className="list-group-item">
               Monthly Payments: {advert.monthlyContibution} EUR
             </li>
           ) : (
             ""
-          )}
-
+          )}*/}
+          <li className ="list-group-item">
+            Furnishing: {advert.furnishing}
+          </li>
           <li className="list-group-item">
             Advertisement published: <Moment fromNow>{advert.createdAt}</Moment>
           </li>
@@ -35,7 +37,7 @@ export default class AdvertInformation extends Component {
         </ul>
 
         <ul className="list-group mt-3">
-          <li className="list-group-item active">Building Information</li>
+          <li className="list-group-item active" style = {{background:"#FFE3B0", color:"#000"}}>Building Information</li>
           <li className="list-group-item">
             Construction Year: {advert.constructionYear}
           </li>
@@ -45,7 +47,7 @@ export default class AdvertInformation extends Component {
         </ul>
 
         <ul className="list-group mt-3">
-          <li className="list-group-item active">Real Estate Dimensions</li>
+          <li className="list-group-item active" style = {{background:"#FFE3B0", color:"#000"}}>Real Estate Dimensions</li>
           <li className="list-group-item">
             Living Space: {advert.sqrMeter} m<sup>2</sup>
           </li>
@@ -55,22 +57,25 @@ export default class AdvertInformation extends Component {
         </ul>
 
         <ul className="list-group mt-3">
-          <li className="list-group-item active">Real Estate Layout</li>
+          <li className="list-group-item active" style = {{background:"#FFE3B0", color:"#000"}}>Real Estate Layout</li>
           <li className="list-group-item">
-            Number of Rooms: {advert.nrOfRooms}
+            No. of Rooms: {advert.nrOfRooms}
           </li>
           <li className="list-group-item">
-            Number of Bathrooms: {advert.nrOfBathrooms}
+            No. of Bathrooms: {advert.nrOfBathrooms}
+          </li>
+          <li className = "list-group-item">
+            No. of Other Rooms: {advert.nrOfOtherRooms}
           </li>
           <li className="list-group-item">
-            Located on: {advert.locatedOnFloor} floor
+            Property Floor: {advert.locatedOnFloor} floor
           </li>
           <li className="list-group-item">
-            Number of Floors: {advert.nrOfFloors}
+            No. of Floors: {advert.nrOfFloors}
           </li>
         </ul>
 
-        <ul className="list-group mt-3">
+        {/*<ul className="list-group mt-3">
           <li className="list-group-item active">Energy</li>
           <li className="list-group-item">
             Energy Label: {advert.energyLabel}
@@ -102,7 +107,7 @@ export default class AdvertInformation extends Component {
           </ul>
         ) : (
           ""
-        )}
+        )}*/}
       </Fragment>
     );
   }

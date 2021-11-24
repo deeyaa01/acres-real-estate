@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { loginUser } from "../../actions/user";
 import { Link } from "react-router-dom";
+import './Login.css';
 
 const initialState = {
   email: "",
@@ -39,17 +40,17 @@ class LoginForm extends Component {
   render() {
     return (
       <Fragment>
-        <div className="d-flex flex-row justify-content-center mt-5">
-          <div className="col-12 col-md-8 col-lg-6 col-xl-3">
-            <div className="card p-5">
-              <h4>Login</h4>
+        <div className="d-flex flex-row justify-content-center mt-5 row align-items-center" >
+          <div className="card flex-row" ><img class="card-img-left example-card-img-responsive" src="https://i.ibb.co/znDVwvH/log-in.png"/>
+            <div className="card card-body p-5" style={{width: "30rem"}}>
+              <h4 class = "card-title" style={{align: "center", font_weight: "3px"}}>Login</h4>
               <form onSubmit={this.login}>
                 <div className="form-group">
-                  <label htmlFor="username">Email</label>
-                  <input
+                  <label htmlFor="username">E-mail Address</label>
+                  <input style = {{background:"#ecebeb"}}
                     type="text"
                     name="email"
-                    placeholder="Email"
+                    placeholder="your@email.com"
                     className="form-control"
                     value={this.state.email}
                     onChange={e => this.handleChange(e)}
@@ -57,7 +58,7 @@ class LoginForm extends Component {
                 </div>
                 <div className="form-group">
                   <label htmlFor="password">Password</label>
-                  <input
+                  <input style = {{background:"#ecebeb"}}
                     type="password"
                     name="password"
                     placeholder="Password"
@@ -69,13 +70,23 @@ class LoginForm extends Component {
                 <div className="form-group">
                   <input
                     type="submit"
-                    value="LOGIN"
+                    value="Continue"
                     className="btn btn-md btn-success"
                   />
                 </div>
+                <div className = "form-group">
+                  <div class="custom-control custom-checkbox">
+                    <input 
+                      type="checkbox" 
+                      class="custom-control-input" 
+                      id="defaultLoginFormRemember"
+                    />
+                    <label class="custom-control-label" for="defaultLoginFormRemember">Remember me</label>
+                  </div>
+                </div> 
               </form>
-              <p>I do not have account</p>
-              <Link to="/register">Sign Me Up</Link>
+              Don't have an account?
+              <Link to="/register">Register now</Link>
             </div>
           </div>
         </div>

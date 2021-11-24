@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from "react-router-dom";
-
+import HomeIcon from "../../assets/homeIcon.svg";
 
 export default class DesktopMenu extends Component {
 
@@ -9,7 +9,9 @@ export default class DesktopMenu extends Component {
       <nav className={`mainNav navbar-expand-lg justify-content-between d-none d-lg-flex ${this.props.scrollDirection==='DOWN'?'navHidden':'navVisible'}`}>
         <div className="align-self-center ml-5">
           <Link className="" to="/">
-            <i className="fa fa-home" style={{fontSize: '30px', color: '#EDF7F6'}}></i>
+            <img style={{height:"30px", align: "center", padding: "3px"}} className ="fa fa-home" src = {HomeIcon}>
+            </img>
+            {/* <i className="fa fa-home" style={{fontSize: '30px', color: '#EDF7F6'}}></i> */}
           </Link>
         </div>
         <div className="navbarLinkContainer" id="navbarSupportedContent">
@@ -23,12 +25,12 @@ export default class DesktopMenu extends Component {
                 </li> */}
                 <li className="nav-item mr-2 my-2">
                   <Link className="text-link" to="/favorites">
-                    My Favorite Adverts
+                    Liked Adverts
                   </Link>
                 </li>
                 <li className="nav-item mr-2 my-2">
                   <Link className="text-link" to="/myadverts">
-                    My Adverts
+                    Your Adverts
                   </Link>
                 </li>
                 {/* <li className="nav-item mr-2 my-2">
@@ -38,7 +40,7 @@ export default class DesktopMenu extends Component {
                 </li> */}
                 <li className="nav-item mr-2 my-2">
                   <Link className="text-link" to="/user">
-                    My Account
+                    Account
                   </Link>
                 </li>
                 <li className="nav-item mr-2 my-2">

@@ -1,0 +1,18 @@
+
+.card {
+    flex-direction: row;
+    padding: 3px;
+    align-items: left;
+  }
+  .card-title {
+    font-style: "sans-serif";
+    font-size: 40px;
+    font-weight: normal;
+  }
+  .card img {
+    width: 30%;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: calc(0.25rem - 1px);
+  }
+  
+  

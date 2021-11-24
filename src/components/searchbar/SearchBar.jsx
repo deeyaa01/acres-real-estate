@@ -78,15 +78,15 @@ class SearchBar extends Component {
   render() {
     // console.log(this.props);
     return (
-      <div className="">
+      <div style={{background:"#271a00"}} className="p-4">
         <div className="container">
           <form
               className="form-inline"
               onSubmit={e => this.searchByCityname(e)}
           >
-          <div className="form-row">
+          <div style={{justifyContent:"center"}} className="form-row">
             <div className="form-group col-12 col-md-3">
-              <label htmlFor="cityName" className="col-12">City Name</label>
+              <label htmlFor="cityName" className="col-12 text-white">City Name</label>
               <input
                 className="form-control col-12"
                 type="search"
@@ -98,7 +98,7 @@ class SearchBar extends Component {
               />
             </div>
             <div className="form-group col-6 col-md-2">
-              <label htmlFor="priceFrom" className="col-12">Price From</label>
+              <label htmlFor="priceFrom" className="col-12 text-white">Price From</label>
               <input
                 className="form-control col-12"
                 type="number"
@@ -111,7 +111,7 @@ class SearchBar extends Component {
               />
             </div>
             <div className="form-group col-6 col-md-2">
-              <label htmlFor="priceTo" className="col-12">Price To</label>
+              <label htmlFor="priceTo" className="col-12 text-white">Price To</label>
               <input
                 className="form-control col-12"
                 type="number"
@@ -123,7 +123,7 @@ class SearchBar extends Component {
                 min="10"
               />
             </div>
-            <div className="d-flex align-items-end">
+            <div className="d-flex align-items-end pt-2">
               <button
                 type="button"
                 className={`btn ml-2 ${

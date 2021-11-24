@@ -81,16 +81,17 @@ class AddNewAdvert extends Component {
   render() {
     return (
       <div className="card">
-        <div className="">
-          <h5 className="card-title greenUnderline m-3">Add New advertisement</h5>
+        <div className="card-body">
+          <h6 className="card-title" style = {{padding:"1px"}}>Add new advertisement</h6>
           {this.state.showAddForm ? (
             <div className="col-12 my-3">
               <button
                 className="btn btn-sm btn-warning my-3"
                 type="button"
+                style= {{background: "#FFAC12", color:"#000"}}
                 onClick={this.showAdvertForm}
               >
-                Hide Advert Form
+                Hide details
               </button>
               <hr className="hrSection" />
               {this.state.error ? (
@@ -109,12 +110,13 @@ class AddNewAdvert extends Component {
             </div>
           ) : (
             <div className="col-6 my-3">
-              <button
+              <button 
                 className="btn btn-sm btn-info"
+                style= {{background: "#FFAC12", color: "#000"}}
                 type="button"
                 onClick={this.showAdvertForm}
               >
-                Add New Advert
+                Add details
               </button>
             </div>
           )}

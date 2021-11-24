@@ -3,6 +3,7 @@ import { createUser } from "../../actions/user";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import './Register.css';
 let baseUrl = "";
 if (process.env.NODE_ENV === "development") {
   baseUrl = "http://localhost:4000";
@@ -37,10 +38,10 @@ class SignUpForm extends Component {
         error: "Please select account type you want create"
       });
     }
-    if (!this.state.password || this.state.password.length < 8) {
+    if (!this.state.password || this.state.password.length <= 6) {
       return this.setState({
         ...this.state,
-        error: "Password should be 8 symbols long or more"
+        error: "Invalic Password. Password should be 6 characters or longer."
       });
     }
     if (this.state.password !== this.state.repeatPassword) {
@@ -48,7 +49,7 @@ class SignUpForm extends Component {
         ...this.state,
         password: "",
         repeatPassword: "",
-        error: "Passwords does not match. Enter passwords one more time."
+        error: "Passwords do not match. Enter passwords again."
       });
     }
     this.canSignUp();
@@ -73,7 +74,7 @@ class SignUpForm extends Component {
     });
   };
 
-  showPrivPersMenu = () => {
+  /*showPrivPersMenu = () => {
     this.setState({
       ...this.state,
       showPrivateMenu: true,
@@ -81,7 +82,7 @@ class SignUpForm extends Component {
       error: "",
       role: "privatePerson"
     });
-  };
+  };*/
 
   showMenuForCompany = () => {
     this.setState({
@@ -127,16 +128,16 @@ class SignUpForm extends Component {
             ""
           )}
         </div>
-        <div className="d-flex flex-row justify-content-center mt-5">
-          <div className="col-12 col-md-8 col-lg-6 col-xl-3">
-            <div className="card p-5">
-              <h4>Sign Up</h4>
+        <div className="d-flex flex-row justify-content-center mt-5 row align-items-center" >
+          <div className="card flex-row" ><img class="card-img-left example-card-img-responsive" src="https://i.ibb.co/znDVwvH/log-in.png"/>
+            <div className="card card-body p-5" style={{width: "30rem"}}>
+              <h4 class = "card-title" style={{align: "center", font_weight: "3px"}}>Register</h4>
               <form onSubmit={this.signUpValidation}>
                 <div className="form-group">
-                  <label htmlFor="email">Email Address</label>
-                  <input
+                  <label htmlFor="email">E-mail Address</label>
+                  <input style = {{background:"#ecebeb"}}
                     type="email"
-                    placeholder="Email"
+                    placeholder="your@email.com"
                     name="email"
                     className="form-control"
                     autoComplete="email"
@@ -146,11 +147,11 @@ class SignUpForm extends Component {
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="username">Name & Surname</label>
-                  <input
+                  <label htmlFor="username">Name</label>
+                  <input style = {{background:"#ecebeb"}}
                     type="text"
                     name="username"
-                    placeholder="Your First Name & Second Name"
+                    placeholder="Your name"
                     className="form-control"
                     autoComplete="name"
                     value={this.state.username}
@@ -158,12 +159,12 @@ class SignUpForm extends Component {
                     required
                   />
                   <small className="form-text text-muted">
-                    Please, input your First name & Second name
+                    
                   </small>
                 </div>
                 <div className="form-group">
                   <label htmlFor="phoneNumber">Phone Number</label>
-                  <input
+                  <input style = {{background:"#ecebeb"}}
                     type="text"
                     placeholder="Phone Number"
                     name="phoneNumber"
@@ -173,129 +174,8 @@ class SignUpForm extends Component {
                   />
                 </div>
                 <div className="form-group">
-                  <button
-                    type="button"
-                    className={
-                      this.state.error
-                        ? "btn btn-lg btn-danger ml-2 mt-1"
-                        : "btn btn-sm btn-outline-info ml-2 mt-1"
-                    }
-                    onClick={this.showPrivPersMenu}
-                  >
-                    I am Private person
-                  </button>
-                  {/* <button
-                    type="button"
-                    className={
-                      this.state.error
-                        ? "btn btn-lg btn-danger ml-2 mt-1"
-                        : "btn btn-sm btn-outline-info ml-2 mt-1"
-                    }
-                    onClick={this.showMenuForCompany}
-                  >
-                    Company Representative
-                  </button> */}
-
-                  {this.state.showPrivateMenu ? (
-                    <div className="alert alert-success mt-3" role="alert">
-                      You have selected to create private person's profile
-                    </div>
-                  ) : this.state.showCompanyMenu ? (
-                    <div className="mt-3">
-                      <label>
-                        Real Estate Company Manager
-                        <input
-                          type="radio"
-                          name="agencyManager"
-                          value="agencyManager"
-                          autoComplete="organization"
-                          onChange={this.handleRadioButton}
-                        />
-                      </label>
-                      <label>
-                        Real Estate Company Agent
-                        <input
-                          type="radio"
-                          name="agencyManager"
-                          value="agencyAgent"
-                          autoComplete="organization"
-                          onChange={this.handleRadioButton}
-                        />
-                      </label>
-                    </div>
-                  ) : (
-                    ""
-                  )}
-
-                  {this.state.role === "agencyAgent" ? (
-                    <div className="form-group">
-                      <div className="text-center">
-                        <label htmlFor="companyName">Company Name</label>
-                      </div>
-                      <input
-                        type="text"
-                        name="companyName"
-                        placeholder="Company Name"
-                        className="form-control"
-                        value={this.state.companyName}
-                        onChange={e => this.handleChange(e)}
-                        required
-                      />
-                      <div className="text-center">
-                        <button
-                          type="button"
-                          className="btn btn-sm btn-info mt-2"
-                          onClick={this.searchAgency}
-                        >
-                          Search
-                        </button>
-                      </div>
-                      {this.state.companyArr.length !== 0 ? (
-                        <div>
-                          {this.state.companyArr.map((company, i) => (
-                            <button
-                              key={i}
-                              className="btn btn-sm btn-outline-info mt-1 ml-1"
-                              onClick={() => this.selectCompany(company.name)}
-                            >
-                              {company.name}
-                            </button>
-                          ))}
-                        </div>
-                      ) : this.state.companySelected ? (
-                        ""
-                      ) : (
-                        <div className="mt-2">
-                          <small>
-                            <ol>
-                              <li>Input keyword to search for company</li>
-                              <li>Press Search</li>
-                              <li>Select your company name from list</li>
-                            </ol>
-                          </small>
-                        </div>
-                      )}
-                    </div>
-                  ) : this.state.role === "agencyManager" ? (
-                    <div className="form-group">
-                      <label htmlFor="companyName">Company Name</label>
-                      <input
-                        type="text"
-                        name="companyName"
-                        placeholder="Company Name"
-                        className="form-control"
-                        value={this.state.companyName}
-                        onChange={e => this.handleChange(e)}
-                        required
-                      />
-                    </div>
-                  ) : (
-                    ""
-                  )}
-                </div>
-                <div className="form-group">
                   <label htmlFor="password">Password</label>
-                  <input
+                  <input style = {{background:"#ecebeb"}}
                     type="password"
                     name="password"
                     placeholder="Password"
@@ -306,15 +186,15 @@ class SignUpForm extends Component {
                     required
                   />
                   <small className="form-text text-muted">
-                    Choose password for your account
+                    Choose an appropriate password for your account.
                   </small>
                 </div>
                 <div className="form-group">
-                  <label htmlFor="repeatPassword">Repeat Password</label>
-                  <input
+                  <label htmlFor="repeatPassword" >Confirm Password</label>
+                  <input style = {{background:"#ecebeb"}}
                     type="password"
                     name="repeatPassword"
-                    placeholder="Repeat Password"
+                    placeholder="Password"
                     className="form-control"
                     autoComplete="new-password"
                     value={this.state.repeatPassword}
@@ -322,18 +202,29 @@ class SignUpForm extends Component {
                     required
                   />
                   <small className="form-text text-muted">
-                    Choose password for your account
+                    Confirm password.
                   </small>
                 </div>
+                <div className = "form-group">
+                  <div class="custom-control custom-checkbox">
+                    <input style = {{background:"#ecebeb"}}
+                      type="checkbox" 
+                      class="custom-control-input" 
+                      id="defaultLoginFormRemember"
+                    />
+                    <label class="custom-control-label" for="defaultLoginFormRemember">I agree to be contacted by Acres and others for similar properties or related services via phone, SMS, email etc.</label>
+                  </div>
+                </div> 
                 <div className="form-group">
                   <input
                     type="submit"
-                    value="SIGN UP"
+                    value="Continue"
                     className="btn btn-md btn-success"
+                    style = {{background: "#74B439 !important", width: "100%"}}
                   />
                 </div>
               </form>
-              <p>I have account</p>
+              Already have an account?
               <Link to="/login">Login</Link>
             </div>
           </div>
